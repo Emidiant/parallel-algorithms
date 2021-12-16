@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cstdio>
-#include "/usr/local/Cellar/libomp/13.0.0/include/omp.h"
+#include "omp.h"
 
 using namespace std;
 
