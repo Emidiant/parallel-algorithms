@@ -101,7 +101,6 @@ int main(int argc, char *argv[]) {
     int num_threads = 10;
     Matrix mat1(n);
     Matrix mat2(n);
-    double t1;
     string orders[3] = {"jki", "ijk", "ikj"};
     if (n == 5) {
         cout << mat1 << endl;
@@ -111,12 +110,16 @@ int main(int argc, char *argv[]) {
             cout << mat1.dot(mat2, order, 1);
         }
     }
+    double time;
 
     for (auto & order : orders){
         printf("Order = %s\n", order.c_str());
-        double time = omp_get_wtime();
-        mat1.dot(mat2, order, 1);
-        t1 = omp_get_wtime() - time;
+        double t1 = 0;
+        for (int i = 0; i < 10; i++) {
+            time = omp_get_wtime();
+            mat1.dot(mat2, order, 1);
+            t1 += omp_get_wtime() - time;
+        }
         for (int thread = 1; thread <= num_threads; thread++) {
             double total_time = 0;
             for (int i = 0; i < 10; i++) {
@@ -124,7 +127,7 @@ int main(int argc, char *argv[]) {
                 mat1.dot(mat2, order, thread);
                 total_time += omp_get_wtime() - time;
             }
-            printf("Threads = %d, Avg time = %f, Efficiency time = %f\n", thread, total_time/10, t1/(total_time/10));
+            printf("Threads = %d, Avg time = %f, Efficiency time = %f\n", thread, total_time/10, t1/total_time);
         }
     }
     return 0;
