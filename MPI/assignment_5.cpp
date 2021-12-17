@@ -16,6 +16,6 @@ int main(int argc, char **argv)
     time_start = MPI_Wtime();
     for (i = 0; i < NTIMES; i++)
         time_finish = MPI_Wtime();
-    cout << "processor " << name << ", process " << rank << "time = " << (time_finish - time_start) / NTIMES << endl;
+    cout << "processor " << name << ", process " << rank << ", time = " << (time_finish - time_start) / NTIMES << endl;
     MPI_Finalize();
 }
