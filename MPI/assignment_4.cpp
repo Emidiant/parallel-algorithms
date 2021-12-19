@@ -30,14 +30,15 @@ int main(int argc, char* argv[]) {
         for (i = 1; i < n; i++) {
             MPI_Send(&a[i-1], 1, MPI_DOUBLE, i, 0, MPI_COMM_WORLD);
         }
+        time_finish = MPI_Wtime();
+        cout << "Process " << rank << ", Time = " << time_finish - time_start << endl;
     }
     else {
         MPI_Recv(&message, 1, MPI_DOUBLE, MPI_ANY_SOURCE, MPI_ANY_TAG,
                  MPI_COMM_WORLD, &status);
-        cout << "Received message: " << message << endl;
+        time_finish = MPI_Wtime();
+        cout << "Process: " << rank << ", Received message: " << message << ", Time = " << time_finish - time_start << endl;
     }
-    time_finish = MPI_Wtime();
-    cout << "process " << rank << ", time = " << time_finish - time_start << endl;
     MPI_Finalize();
     return 0;
 }
