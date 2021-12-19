@@ -1,5 +1,9 @@
 #include <iostream>
-#include "omp.h"
+//#include "omp.h"
+#include "/usr/local/Cellar/libomp/13.0.0/include/omp.h"
+///usr/local/Cellar/llvm/13.0.0_2/lib/clang/13.0.0/include/omp.h
+///usr/local/Cellar/gcc/11.2.0_3/lib/gcc/11/gcc/x86_64-apple-darwin20/11/include/omp.h
+///usr/local/Cellar/libomp/13.0.0/include/omp.h
 
 using namespace std;
 
