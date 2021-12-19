@@ -1,6 +1,6 @@
 #include <iostream>
-#include "mpi.h"
-//#import "/usr/local/Cellar/open-mpi/4.1.2/include/mpi.h"
+//#include "mpi.h"
+#import "/usr/local/Cellar/open-mpi/4.1.2/include/mpi.h"
 
 /*
     #26
