@@ -12,12 +12,14 @@
 using namespace std;
 
 int main(int argc, char* argv[]) {
+    double time_start, time_finish;
     MPI_Init(&argc, &argv);
     int rank, n, i;
     double message;
     MPI_Status status;
     MPI_Comm_size(MPI_COMM_WORLD, &n);
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+    time_start = MPI_Wtime();
     if (rank == 0) {
         double a[n-1];
         for (i = 0; i < n-1; i++){
@@ -34,6 +36,8 @@ int main(int argc, char* argv[]) {
                  MPI_COMM_WORLD, &status);
         cout << "Received message: " << message << endl;
     }
+    time_finish = MPI_Wtime();
+    cout << "process " << rank << ", time = " << time_finish - time_start << endl;
     MPI_Finalize();
     return 0;
 }
