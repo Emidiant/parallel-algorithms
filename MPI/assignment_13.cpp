@@ -24,11 +24,11 @@ int main(int argc, char **argv) {
             C[i][j] = 0;
         }
     }
-    MPI_Barrier(MPI_COMM_WORLD); //barrier process synchronization
     double start_time[size];
     double total_time[size];
     for (int i = 0; i < size; i++)
         total_time[i] = 0;
+    MPI_Barrier(MPI_COMM_WORLD); //barrier process synchronization
 
     start_time[rank] = MPI_Wtime();
     for (int i = 0; i < n; i++)
