@@ -12,7 +12,8 @@ int main(int argc, char **argv) {
     MPI_File fh;
     char buf[BUFSIZE];
     ofstream f1("file.txt");
-    f1 << "Hello, world \nThere is very little left. We will definitely survive.";
+    f1 << "Hello, world \nThere is very little left. We will definitely survive.\n"
+          "These laboratory works are not difficult, but they take a lot of time due to the quantity.";
     f1.close();
 
     MPI_File_open(MPI_COMM_WORLD, "file.txt", MPI_MODE_RDONLY | MPI_MODE_DELETE_ON_CLOSE, MPI_INFO_NULL, &fh);
