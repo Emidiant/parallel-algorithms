@@ -3,7 +3,7 @@
 //#include "mpi.h"
 #import "/usr/local/Cellar/mpich/3.4.3/include/mpi.h"
 using namespace std;
-#define BUFSIZE 20
+#define BUFSIZE 40
 
 int main(int argc, char **argv) {
     int rank;
