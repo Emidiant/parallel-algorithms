@@ -12,6 +12,7 @@ int main(int argc, char **argv) {
     printf("portname: %s\n", port_name);
     printf("Wait for the client\n");
     MPI_Comm_accept(port_name, MPI_INFO_NULL, 0, MPI_COMM_SELF, &intercomm);
+    printf("Client connected\n");
     MPI_Send(&s_m, 1, MPI_INT, 0, 0, intercomm);
     printf("Server sent %d\n", s_m);
     MPI_Recv(&s_m, 1, MPI_INT, 0, 0, intercomm, &status);
